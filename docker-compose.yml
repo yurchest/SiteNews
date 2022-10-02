@@ -29,5 +29,3 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 80:80
-
-

@@ -3,6 +3,7 @@ import NewsItem from "./NewsItem";
 import {useFetching} from "../hooks/useFetching";
 import YurchestService from "../API/YurchestService";
 import NewsList from "./NewsList";
+import { useSortedNews } from "../hooks/useSortedNews";
   
 const Home = () => {
 
@@ -13,6 +14,8 @@ const Home = () => {
         setNews(response.data)
     })
 
+    const sortedNews = useSortedNews(news);
+
     useEffect(() => {
         fetchNews()
     }, [])
@@ -21,7 +24,7 @@ const Home = () => {
     return (
     <div>
         <h1>Its a home page</h1>
-        <NewsList news = {news}/>
+        <NewsList news = {sortedNews}/>
     </div>
   );
 };
