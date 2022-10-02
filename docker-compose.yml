@@ -1,0 +1,33 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+      - ./backend/:/backend/
+    command: uvicorn src.app:app --reload --workers 1 --host 0.0.0.0 --port 8000
+    env_file:
+      - ./backend/.env
+    ports:
+      - 8000:8000
+
+  frontend:
+    environment:
+      - WDS_SOCKET_PORT=8001
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend/:/frontend/
+    ports:
+      - 8001:3000
+
+  proxy:
+    image: nginx:mainline
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+
+
