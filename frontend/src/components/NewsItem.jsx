@@ -6,7 +6,10 @@ const NewsItem = (props) => {
             <div className="news__content">
                 <strong>{props.news.id}. {props.news.content}</strong>
                 <div>
-                    {props.news.url}
+                    <a href={props.news.url}>{props.news.url}</a>
+                </div>
+                <div>
+                    {new Date(props.news.time_update).toLocaleString()}
                 </div>
             </div>
         </div>

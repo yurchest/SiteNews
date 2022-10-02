@@ -16,10 +16,14 @@
 
 
 .news{
+	margin-left: 10%;
+	width: 1000px;
 	display: flex;
 	padding: 15px;
 	border: 2px solid teal;
 	margin-top: 15px;
 	justify-content: space-between;
 	align-items: center;
+	border-radius: 30px;
+
 }

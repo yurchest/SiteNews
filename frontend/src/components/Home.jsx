@@ -4,19 +4,19 @@ import {useFetching} from "../hooks/useFetching";
 import YurchestService from "../API/YurchestService";
 import NewsList from "./NewsList";
   
-const Home = (props) => {
+const Home = () => {
 
     const [news, setNews] = useState([])
 
     const [fetchNews, isNewsLoading, newsError] = useFetching(async() => {
         const response = await YurchestService.getAll();
         setNews(response.data)
-        console.log(response.data)
     })
 
     useEffect(() => {
         fetchNews()
     }, [])
+
 
     return (
     <div>
