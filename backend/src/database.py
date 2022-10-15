@@ -6,8 +6,8 @@ from .settings import settings
 engine = create_engine(
     settings.database_url,
     connect_args={
-                'check_same_thread': False,
-                  },
+        'check_same_thread': False,
+    },
 )
 
 Session = sessionmaker(
@@ -23,4 +23,3 @@ def get_session() -> Session:
         yield session
     finally:
         session.close()
-
